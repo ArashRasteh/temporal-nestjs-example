@@ -1,22 +1,25 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Post } from '@nestjs/common';
 import { InjectTemporalClient } from 'nestjs-temporal';
 import { WorkflowClient } from '@temporalio/client';
+import { WorkflowService } from '../service/workflowService';
 
 @Controller()
 export class AppController {
-  constructor(
-    @InjectTemporalClient() private readonly temporalClient: WorkflowClient,
-  ) {}
-
+  constructor(private readonly workflowService: WorkflowService) {}
   @Post()
-  async greeting() {
-    const handle = await this.temporalClient.start('processOrder', {
-      args: ['Temporal'],
-      taskQueue: 'default',
-      workflowId: 'wf-id-' + Math.floor(Math.random() * 1000),
-    });
-    console.log(`Started workflow ${handle.workflowId}`);
-    const result = await handle.result();
-    console.log(`Workflow result: ${result}`);
+  async makeOrder() {
+    const order = {
+      id: 'order-id-' + Math.floor(Math.random() * 1000),
+      name: 'order-name-' + Math.floor(Math.random() * 1000),
+      price: 100,
+      quantity: 2,
+      status: 'pending',
+    };
+
+    await this.workflowService.makeOrder(order);
+
+    return {
+      result: order,
+    };
   }
 }

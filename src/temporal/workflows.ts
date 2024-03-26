@@ -6,7 +6,7 @@ import {
 import { ISaveOrderActivity } from './activity/saveOrder.activity';
 import { ISendOrderCreatedEventActivity } from './activity/sendOrderCreatedDomainEvent.activity';
 import { ISendSyncEventActivity } from './activity/sendSyncEvent.activity';
-import { Order } from './order';
+import { Order } from '../domain/order';
 
 const { saveOrder } = proxyActivities<ISaveOrderActivity>({
   startToCloseTimeout: '1 minute',

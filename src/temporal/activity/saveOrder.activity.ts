@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Activities, Activity } from 'nestjs-temporal';
-import { Order } from '../order';
-import { OrderRepository } from '../service/order.repository';
+import { Order } from '../../domain/order';
+import { OrderRepository } from '../../service/orderRepository';
 
 @Injectable()
 @Activities()

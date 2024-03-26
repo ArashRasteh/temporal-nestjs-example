@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Activities, Activity } from 'nestjs-temporal';
-import { Order } from '../order';
-import { MessageBrokerClient } from '../service/messageBrokerClient';
+import { Order } from '../../domain/order';
+import { MessageBrokerClient } from '../../service/messageBrokerClient';
 
 @Injectable()
 @Activities()
