@@ -35,4 +35,13 @@ export async function processOrder(order: Order): Promise<string> {
 export async function syncOrder(order: Order): Promise<void> {
   await sendOrderCreatedEvent(order);
   await sendAnalyticsSyncEvent(order);
+
+  await executeChild(sayHi, {
+    parentClosePolicy: ParentClosePolicy.PARENT_CLOSE_POLICY_ABANDON,
+  })
+
+}
+
+export async function sayHi(): Promise<void> {
+  console.log('Hi');
 }
