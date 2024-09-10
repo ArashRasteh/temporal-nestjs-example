@@ -9,11 +9,13 @@ import { OrderRepository } from './service/orderRepository';
 import { AnalyticsStorageClient } from './service/analyticsStorageClient';
 import { MessageBrokerClient } from './service/messageBrokerClient';
 import { WorkflowService } from './service/workflowService';
+import { SayHiActivity } from './temporal/activity/sayHi.activity';
 
 const activities = [
   SaveOrderActivity,
   SendOrderCreatedEventActivity,
   SendSyncEventActivity,
+  SayHiActivity
 ];
 
 const services = [

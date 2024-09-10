@@ -14,7 +14,7 @@ export class SayHiActivity {
   @Activity()
   async sayHello(order: Order): Promise<void> {
     await this.analyticsStorageClient.sync(order);
-    // console.log('hello from inside SayHiActivity');
+    console.log('hello from inside SayHiActivity');
   }
 }
 
